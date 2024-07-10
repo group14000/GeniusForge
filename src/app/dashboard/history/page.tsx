@@ -4,8 +4,15 @@ import React, { useEffect, useState } from 'react';
 import { db } from '../../../../utils/db';
 import { AIOutput } from '../../../../utils/schema';
 
+export interface HistoryItem {
+  id: string;
+  templateSlug: string;
+  aiResponse: string;
+  createdAt: string;
+}
+
 const History = () => {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<HistoryItem[]>([]);
   const [copied, setCopied] = useState<string | null>(null);
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
 
@@ -13,7 +20,13 @@ const History = () => {
     const fetchData = async () => {
       try {
         const result = await db.select().from(AIOutput);
-        setData(result);
+        const formattedResult = result.map((item: any) => ({
+          id: item.id.toString(),
+          templateSlug: item.templateSlug,
+          aiResponse: item.aiResponse || '',
+          createdAt: item.createdAt || ''
+        }));
+        setData(formattedResult);
       } catch (error) {
         console.error('Error fetching data:', error);
       }

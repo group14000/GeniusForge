@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button";
+"use client"
+import Page from "./(auth)/sign-in/[[...sign-in]]/page";
 
 
 export default function Home() {
   return (
     <div>
-      <Button>Hi</Button>
+      <Page/>
     </div>
   );
 }
