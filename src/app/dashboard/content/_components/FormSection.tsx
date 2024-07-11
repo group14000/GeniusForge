@@ -19,14 +19,13 @@ const FormSection = ({ selectedTemplate, userFormInput, loading }: PROPS) => {
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-
   }
 
   const onSubmit = (e: any) => {
     e.preventDefault();
     userFormInput(formData);
-
   }
+
   return (
     <div className='p-5 shadow-lg border rounded-lg bg-white'>
       {/* @ts-ignore */}
@@ -36,19 +35,23 @@ const FormSection = ({ selectedTemplate, userFormInput, loading }: PROPS) => {
 
       <form className='mt-6' onSubmit={onSubmit}>
         {selectedTemplate?.form?.map((item, index) => (
-          <div className='my-2 flex flex-col gap-2 mb-2'>
+          <div key={index} className='my-2 flex flex-col gap-2 mb-2'>
             <label className='font-bold'>{item.label}</label>
-            {item.field == 'input' ? <Input name={item.name} required={item?.required}
-              onChange={handleInputChange}
-            /> : item.field == 'textarea' ? <Textarea name={item.name} required={item?.required}
-              onChange={handleInputChange}
-            /> : null}
+            {item.field == 'input' ? (
+              <Input name={item.name} required={item?.required}
+                onChange={handleInputChange}
+              />
+            ) : item.field == 'textarea' ? (
+              <Textarea name={item.name} required={item?.required}
+                onChange={handleInputChange}
+              />
+            ) : null}
           </div>
         ))}
-        <Button type='submit'
-          disabled={loading} className='w-full py-6'>
+        <Button type='submit' disabled={loading} className='w-full py-6'>
           {loading && <Loader2Icon className='animate-spin' />}
-          Generate Content</Button>
+          Generate Content
+        </Button>
       </form>
     </div>
   )

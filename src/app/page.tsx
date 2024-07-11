@@ -57,15 +57,15 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-8">Testimonials</h2>
             <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8">
               <div className="bg-white p-6 rounded-lg shadow-md">
-                <p className="text-gray-700 mb-4">"This tool has revolutionized the way I create content!"</p>
+                <p className="text-gray-700 mb-4">&quot;This tool has revolutionized the way I create content!&quot;</p>
                 <p className="font-semibold">- User A</p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-md">
-                <p className="text-gray-700 mb-4">"Efficient and easy to use. Highly recommend!"</p>
+                <p className="text-gray-700 mb-4">&quot;Efficient and easy to use. Highly recommend!&quot;</p>
                 <p className="font-semibold">- User B</p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-md">
-                <p className="text-gray-700 mb-4">"A game-changer for content creation."</p>
+                <p className="text-gray-700 mb-4">&quot;A game-changer for content creation.&quot;</p>
                 <p className="font-semibold">- User C</p>
               </div>
             </div>
